@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff scheduling system</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- 可以在這裡添加其他的 meta 標籤、CSS 樣式表和 JavaScript 腳本 -->
+    
+</head>
+<body>
+
+    <header>
+        <h1>Staff scheduling system</h1>
+        <!-- 在這裡添加其他的頁首內容 -->
+    </header>
+
+    <main>
+        <section id="section1">
+            <h2>Next Weekly Scheduling</h2>
+            <a href="{{ url_for('staff_dashboard') }}">This week schedule</a>
+            <br>
+            <a href="{{ url_for('your_info') }}">Staff info</a>
+            <br>
+            <form action="{{ url_for('staff_nextweek_nochoose') }}" method="post">
+            <table id="nextweeklyTable">
+                <tr>
+                    <th>Time</th>
+                    <th id="mon"></th>
+                    <th id="tue"></th>
+                    <th id="wed"></th>
+                    <th id="thu"></th>
+                    <th id="fri"></th>
+                    <th id="sat"></th>
+                    <th id="sun"></th>
+                </tr>
+                <tr>
+                    <td>12:00am~8:00am</td>
+                    <td><label><input type="checkbox" name="selected_values" value="1-1"></label></td>
+                    <td><label><input type="checkbox" name="selected_values" value="2-1"></label></td>
+                    <td><label><input type="checkbox" name="selected_values" value="3-1"></label></td>
+                    <td><label><input type="checkbox" name="selected_values" value="4-1"></label></td>
+                    <td><label><input type="checkbox" name="selected_values" value="5-1"></label></td>
+                    <td><label><input type="checkbox" name="selected_values" value="6-1"></label></td>
+                    <td><label><input type="checkbox" name="selected_values" value="7-1"></label></td>
+                </tr>
+                <tr>
+                    <td>8:00am~4:00pm</td>
+                    <td><label><input type="checkbox" name="selected_values" value="1-2"></label></td>
+                    <td><label><input type="checkbox" name="selected_values" value="2-2"></label></td>
+                    <td><label><input type="checkbox" name="selected_values" value="3-2"></label></td>
+                    <td><label><input type="checkbox" name="selected_values" value="4-2"></label></td>
+                    <td><label><input type="checkbox" name="selected_values" value="5-2"></label></td>
+                    <td><label><input type="checkbox" name="selected_values" value="6-2"></label></td>
+                    <td><label><input type="checkbox" name="selected_values" value="7-2"></label></td>
+                </tr>
+                <tr>
+                    <td>4:00pm~12:00am</td>
+                    <td><label><input type="checkbox" name="selected_values" value="1-3"></label></td>
+                    <td><label><input type="checkbox" name="selected_values" value="2-3"></label></td>
+                    <td><label><input type="checkbox" name="selected_values" value="3-3"></label></td>
+                    <td><label><input type="checkbox" name="selected_values" value="4-3"></label></td>
+                    <td><label><input type="checkbox" name="selected_values" value="5-3"></label></td>
+                    <td><label><input type="checkbox" name="selected_values" value="6-3"></label></td>
+                    <td><label><input type="checkbox" name="selected_values" value="7-3"></label></td>
+                </tr>
+            </table>
+            <br>
+            <form action="" method="post">
+                <button type="submit">Submit</button>
+            </form>
+            <br>
+            <form action="{{ url_for('log_out') }}" method="post">
+                <button type="log_out">Log Out</button>
+            </form>
+        </section>
+        <!-- 在這裡添加其他的主要內容區塊 -->
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Scheduling system. All rights reserved.</p>
+        <!-- 在這裡添加其他的頁尾內容 -->
+    </footer>
+
+    <script>// 獲取今天的日期
+        const today = new Date();
+
+        // 獲取本周的星期一日期
+        const monday = new Date(today);
+        monday.setDate(today.getDate() - today.getDay() + (today.getDay() === 0 ? -6 : 1));
+
+        // 獲取下周的星期一日期
+        const nextMonday = new Date(monday);
+        nextMonday.setDate(monday.getDate() + 7);
+
+        // 獲取表格元素
+        const table = document.getElementById('nextweeklyTable');
+
+        // 填充表格表頭的日期
+        for (let i = 1; i <= 7; i++) {
+            const currentDay = new Date(nextMonday);
+            currentDay.setDate(nextMonday.getDate() + i - 1);
+
+            const thElement = document.getElementById(getDayAbbreviation(currentDay));
+            thElement.textContent = formatDate(currentDay);
+        }
+
+        // 格式化日期為 "MM/DD" 的字符串
+        function formatDate(date) {
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            return `${month}/${day}`;
+        }
+
+        // 獲取日期的星期縮寫
+        function getDayAbbreviation(date) {
+            const daysOfWeek = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+            return daysOfWeek[date.getDay()];
+        }
+    </script>
+    <!-- 在這裡添加其他的 JavaScript 腳本 -->
+</body>
+</html>

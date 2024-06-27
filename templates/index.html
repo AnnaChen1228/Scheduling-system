@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scheduling system</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Scheduling system</h1>
+        <h2>1091430 陳冠蓉</h2>
+        <!-- 在這裡添加其他的頁首內容 -->
+    </header>
+
+    <main>
+        <section id="section1">
+            <h2>Identity</h2>
+            <form action="{{ url_for('boss_login') }}" method="get">
+                <button type="submit">Boss</button>
+            </form>
+            <br><br>
+            <form action="{{ url_for('staff_login') }}" method="get">
+                <button type="submit">Staff</button>
+            </form>
+            <br><br>
+        </section>
+        <!-- 在這裡添加其他的主要內容區塊 -->
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Scheduling system. All rights reserved.</p>
+        <!-- 在這裡添加其他的頁尾內容 -->
+    </footer>
+
+</body>
+</html>

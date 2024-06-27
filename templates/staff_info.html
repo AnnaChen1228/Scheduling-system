@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boss scheduling system</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- 可以在這裡添加其他的 meta 標籤、CSS 樣式表和 JavaScript 腳本 -->
+    
+</head>
+<body>
+
+    <header>
+        <h1>Boss scheduling system</h1>
+        <!-- 在這裡添加其他的頁首內容 -->
+    </header>
+
+    <main>
+        <section id="section1">
+            <h2>Staff info</h2>
+            <a href="{{ url_for('boss_dashboard') }}">This week schedule</a>
+            <br>
+            <a href="{{ url_for('boss_nextweek') }}">Next week schedule</a>
+            <br>
+            <form action="{{ url_for('staff_list') }}">
+                <table id="staffTable">
+                    <tr>
+                        <th>Num</th>
+                        <th>Name</th>
+                        <th>Phone Number</th>
+                        <th>Working Hours</th>
+                        <th>Salary</th>
+                    </tr>
+                    {% for staff in staffs %}
+                        <tr>
+                            <td>{{ staff['id'] }}</td>
+                            <td>{{ staff['name'] }}</td>
+                            <td>{{ staff['phone'] }}</td>
+                            <td>{{ staff['working_hour'] }}</td> <!-- Add working hours if available -->
+                            <td>{{ staff['salary'] }}</td> <!-- Add salary if available -->
+                        </tr>
+                    {% endfor %}
+                </table>
+            </form>
+        </section>
+        <br>
+        <form action="{{ url_for('log_out') }}" method="post">
+            <button type="log_out">Log Out</button>
+        </form>
+        <!-- 在這裡添加其他的主要內容區塊 -->
+    </main>
+    
+
+    <footer>
+        <p>&copy; 2023 Scheduling system. All rights reserved.</p>
+        <!-- 在這裡添加其他的頁尾內容 -->
+    </footer>
+
+    
+</body>
+</html>

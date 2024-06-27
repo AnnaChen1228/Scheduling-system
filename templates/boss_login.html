@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boss scheduling system</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- 可以在這裡添加其他的 meta 標籤、CSS 樣式表和 JavaScript 腳本 -->
+</head>
+<body>
+
+    <header>
+        <h1>Boss scheduling system</h1>
+        <!-- 在這裡添加其他的頁首內容 -->
+    </header>
+
+    <main>
+        <section id="section1">
+            <h2>Login</h2>
+            {% if message %}
+                <p style="color: red;">{{ message }}</p>
+            {% endif %}
+                <form action="{{ url_for('boss_login') }}" method="post">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                    <br>
+                    <br>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    <br>
+                    <br>
+                    <button type="submit">Login</button>
+                </form>
+        </section>
+        <!-- 在這裡添加其他的主要內容區塊 -->
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Scheduling system. All rights reserved.</p>
+        <!-- 在這裡添加其他的頁尾內容 -->
+    </footer>
+
+    <!-- 在這裡添加其他的 JavaScript 腳本 -->
+</body>
+</html>

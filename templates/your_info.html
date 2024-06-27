@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff scheduling system</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- 可以在這裡添加其他的 meta 標籤、CSS 樣式表和 JavaScript 腳本 -->
+    <style>
+       
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Staff scheduling system</h1>
+        <!-- 在這裡添加其他的頁首內容 -->
+    </header>
+
+    <main>
+        <section id="section1">
+            <h2>Your info</h2>
+            <a href="{{ url_for('staff_dashboard') }}">This week schedule</a>
+            <br>
+            <a href="{{ url_for('staff_nextweek') }}">Next week schedule</a>
+            <br>
+            <form action="{{ url_for('your_list') }}">
+                <table id="infoTable">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Phone Number</th>
+                        <th>Working Hours</th>
+                        <th>Salary</th>
+                    </tr>
+                    {% for your in yours %}
+                        <tr>
+                            <td>{{ your['id'] }}</td>
+                            <td>{{ your['name'] }}</td>
+                            <td>{{ your['phone'] }}</td>
+                            <td>{{ your['working_hour'] }}</td>
+                            <td>{{ your['salary'] }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </form>
+            <br>
+            <!--<br>
+            <table id="workTable">
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>-->
+        </section>
+        <br>
+        <form action="{{ url_for('log_out') }}" method="post">
+            <button type="log_out">Log Out</button>
+        </form>
+        <!-- 在這裡添加其他的主要內容區塊 -->
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Scheduling system. All rights reserved.</p>
+        <!-- 在這裡添加其他的頁尾內容 -->
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    text-align: center; /* 將文本置中 */
+}
+
+header, main, footer {
+    width: 80%; /* 設定元素寬度，這裡以80%為例，你可以根據需要調整 */
+    margin: 0 auto; /* 將元素水平置中 */
+    text-align: center; /* 重新設定文本置左對齊，如果有需要 */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline;
+    margin-right: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+td, th {
+    padding: 8px;
+    text-align: center;
+}
